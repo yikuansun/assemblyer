@@ -84,3 +84,9 @@ function interpret(compiled) {
         else break;
     }
 }
+
+document.querySelector("button").addEventListener("click", function() {
+    var compiled = compile(document.querySelector("textarea").value);
+    if (typeof(compiled) == "object") interpret(compiled);
+    else alert(compiled);
+})
