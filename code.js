@@ -25,8 +25,17 @@ function interpret(compiled) {
     var code = compiled.lines;
     var memory = {};
     var ACC = null;
+    var locvalue = 0;
     while (lineIndex <= code.length) {
-        var line = code[lineIndex - 1]; 
+        var line = code[lineIndex - 1];
+
+        if (line.loc.split("")[0] == "=") {
+            locvalue = parseInt(line.loc.split("=")[1]);
+        }
+        else {
+            locvalue = memory[line.loc];
+        }
+
         switch (line.opcode) {
             case "LOAD":
                 // do stuff
