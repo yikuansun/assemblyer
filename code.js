@@ -15,7 +15,11 @@ function compile(code) {
             opcode: line.split(" ")[1],
             loc: line.split(" ")[2],
         });
-        if (line.split(" ")[0]) compiledObject.labels[line.split(" ")[0]] = i;
+        if (line.split(" ")[0]) compiledObject.labels[line.split(" ")[0]] = i + 1;
     }
     return compiledObject;
+}
+
+function interpret(compiled) {
+    var lineIndex = 1;
 }
