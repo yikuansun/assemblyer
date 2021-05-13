@@ -74,7 +74,7 @@ function interpret(compiled) {
                 alert(locvalue); // replace with custom print system
                 break;
             case "DC":
-                memory[line.label] = locvalue;
+                memory[line.label] = parseInt(line.loc);
                 break;
             case "END":
                 lineIndex = "END";
