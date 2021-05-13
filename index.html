@@ -9,17 +9,16 @@
         If you choose to omit LABEL or LOC, still write the spaces, but leave the argument blank.
     </p>
 </center>
-<textarea rows="15">TEMP DC 0
-A DC 8
-B DC -2
-C DC 3
- LOAD B
- MULT C
- ADD A
- DIV B
- SUB A
- STORE TEMP
- PRINT TEMP
+<textarea rows="15"> READ X
+ LOAD X
+TOP SUB =1
+ BE DONE
+ STORE A
+ MULT X
+ STORE X
+ LOAD A
+ BU TOP
+DONE PRINT X
  END </textarea>
 <button>Run</button>
 <script src="code.js"></script>

@@ -78,6 +78,7 @@ function interpret(compiled) {
                 break;
             case "END":
                 lineIndex = "END";
+                alert("done"); // replace with custom print system
                 break;
         }
         if (typeof(lineIndex) == "number") lineIndex++;
