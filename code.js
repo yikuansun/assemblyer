@@ -15,7 +15,7 @@ function compile(code) {
             opcode: line.split(" ")[1],
             loc: line.split(" ")[2],
         });
-        if (line.split(" ")[0]) compiledObject.labels[line.split(" ")[0]] = i + 1;
+        if (line.split(" ")[0]) compiledObject.labels[line.split(" ")[0]] = i;
     }
     return compiledObject;
 }
@@ -38,8 +38,49 @@ function interpret(compiled) {
 
         switch (line.opcode) {
             case "LOAD":
-                // do stuff
+                ACC = locvalue;
+                break;
+            case "STORE":
+                memory[line.loc] = ACC;
+                break;
+            case "ADD":
+                ACC += locvalue;
+                break;
+            case "SUB":
+                ACC -= locvalue;
+                break;
+            case "MULT":
+                ACC *= locvalue;
+                break;
+            case "DIV":
+                ACC = parseInt((ACC / locvalue).toString());
+                break;
+            case "BG":
+                if (ACC > 0) lineIndex = compiled.labels[line.loc];
+                break;
+            case "BE":
+                if (ACC == 0) lineIndex = compiled.labels[line.loc];
+                break;
+            case "BL":
+                if (ACC < 0) lineIndex = compiled.labels[line.loc];
+                break;
+            case "BU":
+                lineIndex = compiled.labels[line.loc];
+                break;
+            case "READ":
+                memory[line.loc] = parseFloat(prompt("")); // replace with custom dialog system
+                break;
+            case "PRINT":
+                alert(locvalue); // replace with custom print system
+                break;
+            case "DC":
+                memory[line.label] = locvalue;
+                break;
+            case "END":
+                lineIndex = "END";
                 break;
         }
+        if (typeof(lineIndex) == "number") lineIndex++;
+        else break;
     }
 }
