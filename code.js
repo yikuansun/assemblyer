@@ -22,4 +22,15 @@ function compile(code) {
 
 function interpret(compiled) {
     var lineIndex = 1;
+    var code = compiled.lines;
+    var memory = {};
+    var ACC = null;
+    while (lineIndex <= code.length) {
+        var line = code[lineIndex - 1]; 
+        switch (line.opcode) {
+            case "LOAD":
+                // do stuff
+                break;
+        }
+    }
 }
