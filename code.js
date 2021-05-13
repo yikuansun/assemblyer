@@ -91,3 +91,11 @@ document.querySelector("#runbutton").addEventListener("click", function() {
     if (typeof(compiled) == "object") interpret(compiled);
     else alert(compiled);
 });
+
+var presets = {
+    "Factorial": " READ X\n LOAD X\nTOP SUB =1\n BE DONE\n STORE A\n MULT X\n STORE X\n LOAD A\n BU TOP\nDONE PRINT X\n END "
+}
+
+for (var button of document.querySelectorAll(".samplecode")) {
+    button.setAttribute("onclick", `document.querySelector("textarea").value = presets.${button.innerText};`);
+}
