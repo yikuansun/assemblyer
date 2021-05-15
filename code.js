@@ -93,9 +93,10 @@ document.querySelector("#runbutton").addEventListener("click", function() {
 });
 
 var presets = {
-    "Factorial": " READ X\n LOAD X\nTOP SUB =1\n BE DONE\n STORE A\n MULT X\n STORE X\n LOAD A\n BU TOP\nDONE PRINT X\n END "
+    "Factorial": " READ X\n LOAD X\nTOP SUB =1\n BE DONE\n STORE A\n MULT X\n STORE X\n LOAD A\n BU TOP\nDONE PRINT X\n END ",
+    "Base 2, backwards": "X DC 13\nY DC 2\nZ DC 0\nQ DC 10\n LOAD X\nTOP BE STOP\n DIV Y\n MULT Y\n STORE W\n LOAD X\n SUB W\n STORE V\n LOAD Z\n MULT Q\n ADD V\n STORE Z\n LOAD X\n SUB V\n DIV Y\n STORE X\n LOAD X\n BU TOP\nSTOP PRINT Z\n END "
 }
 
 for (var button of document.querySelectorAll(".samplecode")) {
-    button.setAttribute("onclick", `document.querySelector("textarea").value = presets.${button.innerText};`);
+    button.setAttribute("onclick", `document.querySelector("textarea").value = presets["${button.innerText}"];`);
 }
